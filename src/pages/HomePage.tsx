@@ -13,12 +13,14 @@ export const HomePage: React.FC = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen bg-gradient-to-r from-primary-900 to-primary-800 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <img 
+        <div className="absolute inset-0 bg-black opacity-70">
+          <img 
           src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
           alt="Latest Technology"
           className="absolute inset-0 w-full h-full object-cover"
         />
+        </div>
+        
         
         <div className="container mx-auto px-4 h-full flex items-center relative z-10">
           <div className="max-w-2xl">
@@ -54,7 +56,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
         
-        <div className="absolute bottom-5 left-0 right-0 flex justify-center">
+        {/* <div className="absolute bottom-5 left-0 right-0 flex justify-center">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -63,7 +65,7 @@ export const HomePage: React.FC = () => {
           >
             <ChevronRight size={32} className="text-white transform rotate-90" />
           </motion.div>
-        </div>
+        </div> */}
       </section>
       
       {/* Categories Section */}

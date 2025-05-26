@@ -172,17 +172,17 @@ export const ContactPage: React.FC = () => {
                   />
                 </div>
 
-                <div>
+                <div className=''>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Message
                   </label>
                   <textarea
                     {...register('message', { required: 'Message is required' })}
                     rows={6}
-                    className={`block w-full rounded-md shadow-sm ${
+                    className={`block w-full rounded-md border px-4 py-2 transition-colors duration-200 focus:outline-none focus:ring-1 ${
                       errors.message
-                        ? 'border-error-500 focus:border-error-500 focus:ring-error-500'
-                        : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500'
+                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
                     }`}
                   ></textarea>
                   {errors.message && (

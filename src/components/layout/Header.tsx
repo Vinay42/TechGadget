@@ -142,10 +142,7 @@ export const Header: React.FC = () => {
           <div className="md:hidden flex items-center">
             <Link to="/cart" className="relative mr-4">
               <button className={clsx(
-                'p-2 rounded-full transition-colors',
-                isScrolled || !isTransparentPage
-                  ? 'text-gray-600 hover:bg-gray-100'
-                  : 'text-white hover:bg-white/10'
+                'pt-1  rounded-full transition-colors text-gray-600 hover:bg-gray-100'
               )}>
                 <ShoppingCart size={20} />
               </button>
@@ -159,10 +156,7 @@ export const Header: React.FC = () => {
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={clsx(
-                'p-2 rounded-md',
-                isScrolled || !isTransparentPage
-                  ? 'text-gray-600 hover:bg-gray-100'
-                  : 'text-white hover:bg-white/10'
+                'p-2 rounded-md text-gray-600 hover:bg-gray-100'
               )}
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -180,10 +174,7 @@ export const Header: React.FC = () => {
                 key={link.path}
                 to={link.path}
                 className={clsx(
-                  'block px-3 py-2 rounded-md text-base font-medium',
-                  location.pathname === link.path
-                    ? 'bg-primary-50 text-primary-600'
-                    : 'text-gray-700 hover:bg-gray-50'
+                  'block px-3 py-2 rounded-md text-base font-medium bg-primary-50 text-primary-600'
                 )}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
