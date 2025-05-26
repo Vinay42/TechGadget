@@ -40,17 +40,14 @@ export const Header: React.FC = () => {
 
   // Determine header styles based on scroll and page
   const headerStyles = clsx(
-    'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
+    'fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white',
     isScrolled || !isTransparentPage
       ? 'bg-white shadow-md py-2'
       : 'bg-transparent py-4'
   );
 
   const navLinkStyles = clsx(
-    'text-base font-medium transition-colors',
-    isScrolled || !isTransparentPage
-      ? 'text-gray-700 hover:text-primary-600'
-      : 'text-white hover:text-gray-200'
+    'text-base font-medium transition-colors text-gray-700 hover:text-primary-600'
   );
 
   return (
@@ -61,7 +58,7 @@ export const Header: React.FC = () => {
           <Link to="/" className="flex items-center">
             <span className={clsx(
               'text-2xl font-bold',
-              isScrolled || !isTransparentPage ? 'text-primary-900' : 'text-white'
+              isScrolled || !isTransparentPage ? 'text-primary-900' : ''
             )}>
               TechGadget
             </span>
@@ -86,20 +83,14 @@ export const Header: React.FC = () => {
           {/* Actions */}
           <div className="hidden md:flex items-center space-x-4">
             <button className={clsx(
-              'p-2 rounded-full transition-colors',
-              isScrolled || !isTransparentPage
-                ? 'text-gray-600 hover:bg-gray-100'
-                : 'text-white hover:bg-white/10'
+              'p-2 rounded-full transition-colors text-gray-600 hover:bg-gray-100'
             )}>
               <Search size={20} />
             </button>
             
             <Link to="/cart" className="relative">
               <button className={clsx(
-                'p-2 rounded-full transition-colors',
-                isScrolled || !isTransparentPage
-                  ? 'text-gray-600 hover:bg-gray-100'
-                  : 'text-white hover:bg-white/10'
+                'p-2 rounded-full transition-colors text-gray-600 hover:bg-gray-100'
               )}>
                 <ShoppingCart size={20} />
               </button>
@@ -137,7 +128,7 @@ export const Header: React.FC = () => {
             ) : (
               <Link to="/login">
                 <Button 
-                  variant={isScrolled || !isTransparentPage ? "primary" : "ghost"}
+                  // variant={isScrolled || !isTransparentPage ? "primary" : "ghost"}
                   size="sm"
                   leftIcon={<User size={16} />}
                 >
