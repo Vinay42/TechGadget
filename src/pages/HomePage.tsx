@@ -131,7 +131,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-3xl font-bold text-gray-900">Featured Products</h2>
@@ -146,7 +146,90 @@ export const HomePage: React.FC = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+      {/* Featured Products */}
+<section className="py-12 sm:py-16">
+  <div className="container mx-auto px-4">
+    <div className="flex justify-between items-center mb-6 sm:mb-8">
+      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Featured Products</h2>
+      <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium flex items-center text-sm sm:text-base">
+        View All <ArrowRight size={14} className="ml-1 sm:w-4 sm:h-4" />
+      </Link>
+    </div>
+    
+    {/* Desktop: Show grid if 4 or fewer items, otherwise horizontal scroll */}
+    {featuredProducts.length <= 4 ? (
+      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+        {featuredProducts.map(product => (
+          <ProductCard key={product.id} product={product} />
+        ))}
+      </div>
+    ) : (
+      <div className="hidden sm:block relative">
+        <div className="flex gap-4 lg:gap-6 overflow-x-auto scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
+          {featuredProducts.map(product => (
+            <div key={product.id} className="flex-none w-64 md:w-72 lg:w-80 snap-start">
+              <ProductCard product={product} />
+            </div>
+          ))}
+          {/* Add spacing at the end */}
+          <div className="flex-none w-4"></div>
+        </div>
+        
+        {/* Gradient fade effect on edges */}
+        <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+      </div>
+    )}
+    
+    {/* Mobile: Always horizontal scroll, show ~2.8 items to hint at more content */}
+    <div className="sm:hidden">
+      <div className="flex gap-3 overflow-x-auto scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
+        {featuredProducts.map(product => (
+          <div key={product.id} className="flex-none w-[calc(33.333%-8px)] min-w-[180px] max-w-[200px] snap-start">
+            <ProductCard product={product} />
+          </div>
+        ))}
+        {/* Add spacing at the end */}
+        <div className="flex-none w-3"></div>
+      </div>
+      
+      {/* Mobile: Show scroll progress indicator */}
+      {featuredProducts.length > 3 && (
+        <div className="flex justify-center mt-3">
+          <div className="flex gap-1">
+            {Array.from({ length: Math.min(featuredProducts.length, 8) }).map((_, index) => (
+              <div 
+                key={index} 
+                className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                  index < 3 ? 'bg-primary-500' : 'bg-gray-300'
+                }`}
+              />
+            ))}
+            {featuredProducts.length > 8 && (
+              <span className="text-xs text-gray-500 ml-2">+{featuredProducts.length - 8}</span>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+  
+  <style jsx>{`
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    
+    /* Smooth momentum scrolling on iOS */
+    .scrollbar-hide {
+      -webkit-overflow-scrolling: touch;
+    }
+  `}</style>
+</section>
 
       {/* Benefits Section */}
       <section className="py-16 bg-gray-50" id="benefit_sect">
