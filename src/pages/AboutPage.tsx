@@ -7,8 +7,8 @@ export const AboutPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-primary-900 overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+          <img
+            src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Team working together"
             className="w-full h-full object-cover opacity-30"
           />
@@ -56,8 +56,8 @@ export const AboutPage: React.FC = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+              <img
+                src="https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 alt="Team meeting"
                 className="rounded-lg shadow-xl"
               />
@@ -78,7 +78,7 @@ export const AboutPage: React.FC = () => {
       </section>
 
       {/* Values */}
-      <section className="py-16 bg-gray-50">
+      {/* <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Core Values</h2>
           <div className="grid md:grid-cols-3 gap-8">
@@ -109,10 +109,51 @@ export const AboutPage: React.FC = () => {
             ))}
           </div>
         </div>
+      </section> */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Our Core Values</h2>
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 lg:gap-8">
+            {[
+              {
+                title: 'Innovation',
+                mobileDescription: 'Bringing cutting-edge solutions to drive progress.',
+                desktopDescription: 'We constantly seek new ways to improve and bring the latest technology to our customers.',
+                icon: <Rocket className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary-600" />,
+              },
+              {
+                title: 'Quality',
+                mobileDescription: 'Excellence in every product and service we deliver.',
+                desktopDescription: 'We maintain the highest standards in our product selection and service delivery.',
+                icon: <Award className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary-600" />,
+              },
+              {
+                title: 'Customer Focus',
+                mobileDescription: 'Your success is our ultimate priority and mission.',
+                desktopDescription: 'Our customers are at the heart of everything we do, driving our decisions and actions.',
+                icon: <Users className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-primary-600" />,
+              },
+            ].map((value, index) => (
+              <div key={index} className="bg-white rounded-lg p-2 sm:p-4 lg:p-8 shadow-md h-full flex flex-col">
+                <div className="bg-primary-50 rounded-full w-10 h-10 sm:w-12 sm:h-12 lg:w-16 lg:h-16 flex items-center justify-center mb-2 sm:mb-3 lg:mb-6 mx-auto flex-shrink-0">
+                  {value.icon}
+                </div>
+                <div className="flex-grow flex flex-col justify-center">
+                  <h3 className="text-xs sm:text-base lg:text-xl font-semibold text-gray-900 mb-1 sm:mb-2 lg:mb-4 text-center leading-tight">{value.title}</h3>
+                  <p className="text-[10px] sm:text-sm lg:text-base text-gray-600 text-center leading-tight sm:leading-relaxed px-1 sm:px-2">
+                    <span className="block sm:hidden">{value.mobileDescription}</span>
+                    <span className="hidden sm:block">{value.desktopDescription}</span>
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
+
       {/* Team */}
-      <section className="py-16 bg-white">
+      {/* <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Meet Our Leadership Team</h2>
           <div className="grid md:grid-cols-4 gap-8">
@@ -150,6 +191,50 @@ export const AboutPage: React.FC = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
                 <p className="text-gray-600">{member.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Meet Our Leadership Team</h2>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {[
+              {
+                name: 'John Smith',
+                role: 'CEO & Founder',
+                image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              },
+              {
+                name: 'Sarah Johnson',
+                role: 'Head of Technology',
+                image: 'https://images.pexels.com/photos/3796217/pexels-photo-3796217.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              },
+              {
+                name: 'Michael Chen',
+                role: 'Operations Director',
+                image: 'https://images.pexels.com/photos/2379005/pexels-photo-2379005.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              },
+              {
+                name: 'Emily Brown',
+                role: 'Customer Success Manager',
+                image: 'https://images.pexels.com/photos/3756679/pexels-photo-3756679.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+              },
+            ].map((member, index) => (
+              <div key={index} className="text-center">
+                <div className="relative mb-2 md:mb-4 group">
+                  <div className="aspect-square overflow-hidden rounded-lg">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                  </div>
+                </div>
+                <h3 className="text-sm md:text-lg font-semibold text-gray-900 leading-tight">{member.name}</h3>
+                <p className="text-xs md:text-base text-gray-600 leading-tight">{member.role}</p>
               </div>
             ))}
           </div>
