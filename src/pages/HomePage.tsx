@@ -149,73 +149,72 @@ export const HomePage: React.FC = () => {
       </section> */}
 
       {/* Featured Products */}
-<section className="py-12 sm:py-16">
-  <div className="container mx-auto px-4">
-    <div className="flex justify-between items-center mb-6 sm:mb-8">
-      <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Featured Products</h2>
-      <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium flex items-center text-sm sm:text-base">
-        View All <ArrowRight size={14} className="ml-1 sm:w-4 sm:h-4" />
-      </Link>
-    </div>
-    
-    {/* Desktop: Show grid if 4 or fewer items, otherwise horizontal scroll */}
-    {featuredProducts.length <= 4 ? (
-      <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
-        {featuredProducts.map(product => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </div>
-    ) : (
-      <div className="hidden sm:block relative">
-        <div className="flex gap-4 lg:gap-6 overflow-x-auto scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
-          {featuredProducts.map(product => (
-            <div key={product.id} className="flex-none w-64 md:w-72 lg:w-80 snap-start">
-              <ProductCard product={product} />
-            </div>
-          ))}
-          {/* Add spacing at the end */}
-          <div className="flex-none w-4"></div>
-        </div>
-        
-        {/* Gradient fade effect on edges */}
-        <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
-      </div>
-    )}
-    
-    {/* Mobile: Always horizontal scroll, show ~2.8 items to hint at more content */}
-    <div className="sm:hidden">
-      <div className="flex gap-3 overflow-x-auto scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
-        {featuredProducts.map(product => (
-          <div key={product.id} className="flex-none w-[calc(33.333%-8px)] min-w-[180px] max-w-[200px] snap-start">
-            <ProductCard product={product} />
+      <section className="py-12 sm:py-16">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Featured Products</h2>
+            <Link to="/products" className="text-primary-600 hover:text-primary-700 font-medium flex items-center text-sm sm:text-base">
+              View All <ArrowRight size={14} className="ml-1 sm:w-4 sm:h-4" />
+            </Link>
           </div>
-        ))}
-        {/* Add spacing at the end */}
-        <div className="flex-none w-3"></div>
-      </div>
-      
-      {/* Mobile: Show scroll progress indicator */}
-      {featuredProducts.length > 3 && (
-        <div className="flex justify-center mt-3">
-          <div className="flex gap-1">
-            {Array.from({ length: Math.min(featuredProducts.length, 8) }).map((_, index) => (
-              <div 
-                key={index} 
-                className={`w-1.5 h-1.5 rounded-full transition-colors ${
-                  index < 3 ? 'bg-primary-500' : 'bg-gray-300'
-                }`}
-              />
-            ))}
-            {featuredProducts.length > 8 && (
-              <span className="text-xs text-gray-500 ml-2">+{featuredProducts.length - 8}</span>
+
+          {/* Desktop: Show grid if 4 or fewer items, otherwise horizontal scroll */}
+          {featuredProducts.length <= 4 ? (
+            <div className="hidden sm:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 lg:gap-6">
+              {featuredProducts.map(product => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          ) : (
+            <div className="hidden sm:block relative">
+              <div className="flex gap-4 lg:gap-6 overflow-x-auto scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
+                {featuredProducts.map(product => (
+                  <div key={product.id} className="flex-none w-64 md:w-72 lg:w-80 snap-start">
+                    <ProductCard product={product} />
+                  </div>
+                ))}
+                {/* Add spacing at the end */}
+                <div className="flex-none w-4"></div>
+              </div>
+
+              {/* Gradient fade effect on edges */}
+              <div className="absolute top-0 right-0 w-8 h-full bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+            </div>
+          )}
+
+          {/* Mobile: Always horizontal scroll, show ~2.8 items to hint at more content */}
+          <div className="sm:hidden">
+            <div className="flex gap-3 overflow-x-auto scroll-smooth scrollbar-hide pb-4 snap-x snap-mandatory">
+              {featuredProducts.map(product => (
+                <div key={product.id} className="flex-none w-[calc(33.333%-8px)] min-w-[180px] max-w-[200px] snap-start">
+                  <ProductCard product={product} />
+                </div>
+              ))}
+              {/* Add spacing at the end */}
+              <div className="flex-none w-3"></div>
+            </div>
+
+            {/* Mobile: Show scroll progress indicator */}
+            {featuredProducts.length > 3 && (
+              <div className="flex justify-center mt-3">
+                <div className="flex gap-1">
+                  {Array.from({ length: Math.min(featuredProducts.length, 8) }).map((_, index) => (
+                    <div
+                      key={index}
+                      className={`w-1.5 h-1.5 rounded-full transition-colors ${index < 3 ? 'bg-primary-500' : 'bg-gray-300'
+                        }`}
+                    />
+                  ))}
+                  {featuredProducts.length > 8 && (
+                    <span className="text-xs text-gray-500 ml-2">+{featuredProducts.length - 8}</span>
+                  )}
+                </div>
+              </div>
             )}
           </div>
         </div>
-      )}
-    </div>
-  </div>
-  
-  <style jsx>{`
+
+        <style >{`
     .scrollbar-hide {
       -ms-overflow-style: none;
       scrollbar-width: none;
@@ -229,10 +228,10 @@ export const HomePage: React.FC = () => {
       -webkit-overflow-scrolling: touch;
     }
   `}</style>
-</section>
+      </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-50" id="benefit_sect">
+      {/* <section className="py-16 bg-gray-50" id="benefit_sect">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
@@ -270,6 +269,85 @@ export const HomePage: React.FC = () => {
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h3>
                 <p className="text-gray-600">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section> */}
+
+      <section className="py-12 sm:py-16 bg-gray-50" id="benefit_sect">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">Why Choose Us</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base px-4 sm:px-0">
+              We provide the best shopping experience with quality products and exceptional service
+            </p>
+          </div>
+
+          {/* Mobile: 2x2 Grid Layout */}
+          <div className="grid grid-cols-2 gap-3 sm:hidden">
+            {[
+              {
+                icon: <Truck className="w-8 h-8 text-primary-600" />,
+                title: 'Free Shipping',
+                description: 'On orders over $50'
+              },
+              {
+                icon: <RefreshCw className="w-8 h-8 text-primary-600" />,
+                title: 'Easy Returns',
+                description: '30-day return policy'
+              },
+              {
+                icon: <ShieldCheck className="w-8 h-8 text-primary-600" />,
+                title: 'Secure Payments',
+                description: '100% secure checkout'
+              },
+              {
+                icon: <Headphones className="w-8 h-8 text-primary-600" />,
+                title: '24/7 Support',
+                description: 'Dedicated customer service'
+              },
+            ].map((benefit, index) => (
+              <div key={index} className="bg-white p-4 rounded-lg shadow-md text-center">
+                <div className="flex justify-center mb-3">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-sm font-semibold text-gray-900 mb-2 leading-tight">{benefit.title}</h3>
+                <p className="text-xs text-gray-600 leading-relaxed">{benefit.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Tablet and Desktop: Original Layout */}
+          <div className="hidden sm:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            {[
+              {
+                icon: <Truck className="w-10 h-10 lg:w-12 lg:h-12 text-primary-600" />,
+                title: 'Free Shipping',
+                description: 'On orders over $50'
+              },
+              {
+                icon: <RefreshCw className="w-10 h-10 lg:w-12 lg:h-12 text-primary-600" />,
+                title: 'Easy Returns',
+                description: '30-day return policy'
+              },
+              {
+                icon: <ShieldCheck className="w-10 h-10 lg:w-12 lg:h-12 text-primary-600" />,
+                title: 'Secure Payments',
+                description: '100% secure checkout'
+              },
+              {
+                icon: <Headphones className="w-10 h-10 lg:w-12 lg:h-12 text-primary-600" />,
+                title: '24/7 Support',
+                description: 'Dedicated customer service'
+              },
+            ].map((benefit, index) => (
+              <div key={index} className="bg-white p-5 lg:p-6 rounded-lg shadow-md text-center">
+                <div className="flex justify-center mb-4">
+                  {benefit.icon}
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{benefit.title}</h3>
+                <p className="text-gray-600 text-sm lg:text-base">{benefit.description}</p>
               </div>
             ))}
           </div>
