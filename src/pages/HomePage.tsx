@@ -10,21 +10,21 @@ export const HomePage: React.FC = () => {
   const [featuredProducts, setFeaturedProducts] = useState(mockProducts.filter(p => p.featured));
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {/* Hero Section */}
       <section className="relative h-screen bg-gradient-to-r from-primary-900 to-primary-800 overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-70">
-          <img 
-          src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
-          alt="Latest Technology"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
+          <img
+            src="https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            alt="Latest Technology"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
         </div>
-        
-        
+
+
         <div className="container mx-auto px-4 h-full flex items-center relative z-10">
           <div className="max-w-2xl">
-            <motion.h1 
+            <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -32,7 +32,7 @@ export const HomePage: React.FC = () => {
             >
               Discover Tomorrow's Technology Today
             </motion.h1>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -46,16 +46,36 @@ export const HomePage: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
             >
-              <Button size="lg" className="px-8">
+              <Button size="lg" className="px-8"
+                onClick={() => {
+                  const section = document.getElementById("categories_shop");
+                  if (section) {
+                    // section.scrollIntoView({ behavior: "smooth" });
+                    const yOffset = -80; // adjust for header height
+                    const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}>
                 Shop Now
               </Button>
-              <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white/10">
+              <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white/10"
+                onClick={() => {
+                  const section = document.getElementById("benefit_sect");
+                  if (section) {
+                    // section.scrollIntoView({ behavior: "smooth" });
+                    const yOffset = -80; // adjust for header height
+                    const y = section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+                    window.scrollTo({ top: y, behavior: "smooth" });
+                  }
+                }}>
                 Learn More
               </Button>
             </motion.div>
           </div>
         </div>
-        
+
         {/* <div className="absolute bottom-5 left-0 right-0 flex justify-center">
           <motion.div
             initial={{ opacity: 0 }}
@@ -67,9 +87,9 @@ export const HomePage: React.FC = () => {
           </motion.div>
         </div> */}
       </section>
-      
+
       {/* Categories Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50" id='categories_shop'>
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop By Category</h2>
@@ -77,7 +97,7 @@ export const HomePage: React.FC = () => {
               Browse our wide selection of products across different categories
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
               { name: 'Audio', image: 'https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
@@ -85,15 +105,15 @@ export const HomePage: React.FC = () => {
               { name: 'Wearables', image: 'https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
               { name: 'Accessories', image: 'https://images.pexels.com/photos/4526407/pexels-photo-4526407.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' },
             ].map((category, index) => (
-              <Link 
-                key={index} 
+              <Link
+                key={index}
                 to={`/products?category=${category.name}`}
                 className="group relative rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10"></div>
                 <div className="h-52 md:h-64 bg-gray-200 overflow-hidden">
-                  <img 
-                    src={category.image} 
+                  <img
+                    src={category.image}
                     alt={category.name}
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                   />
@@ -109,7 +129,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Featured Products */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -119,7 +139,7 @@ export const HomePage: React.FC = () => {
               View All <ArrowRight size={16} className="ml-1" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {featuredProducts.map(product => (
               <ProductCard key={product.id} product={product} />
@@ -127,9 +147,9 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Benefits Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gray-50" id="benefit_sect">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose Us</h2>
@@ -137,28 +157,28 @@ export const HomePage: React.FC = () => {
               We provide the best shopping experience with quality products and exceptional service
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { 
-                icon: <Truck className="w-12 h-12 text-primary-600" />, 
-                title: 'Free Shipping', 
-                description: 'On orders over $50' 
+              {
+                icon: <Truck className="w-12 h-12 text-primary-600" />,
+                title: 'Free Shipping',
+                description: 'On orders over $50'
               },
-              { 
-                icon: <RefreshCw className="w-12 h-12 text-primary-600" />, 
-                title: 'Easy Returns', 
-                description: '30-day return policy' 
+              {
+                icon: <RefreshCw className="w-12 h-12 text-primary-600" />,
+                title: 'Easy Returns',
+                description: '30-day return policy'
               },
-              { 
-                icon: <ShieldCheck className="w-12 h-12 text-primary-600" />, 
-                title: 'Secure Payments', 
-                description: '100% secure checkout' 
+              {
+                icon: <ShieldCheck className="w-12 h-12 text-primary-600" />,
+                title: 'Secure Payments',
+                description: '100% secure checkout'
               },
-              { 
-                icon: <Headphones className="w-12 h-12 text-primary-600" />, 
-                title: '24/7 Support', 
-                description: 'Dedicated customer service' 
+              {
+                icon: <Headphones className="w-12 h-12 text-primary-600" />,
+                title: '24/7 Support',
+                description: 'Dedicated customer service'
               },
             ].map((benefit, index) => (
               <div key={index} className="bg-white p-6 rounded-lg shadow-md text-center">
@@ -172,7 +192,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Latest News */}
       <section className="py-16">
         <div className="container mx-auto px-4">
@@ -182,14 +202,14 @@ export const HomePage: React.FC = () => {
               View All <ArrowRight size={16} className="ml-1" />
             </Link>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {mockNews.map((article) => (
               <Link key={article.id} to={`/news/${article.slug}`} className="group">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden h-full flex flex-col">
                   <div className="h-48 bg-gray-100 overflow-hidden">
-                    <img 
-                      src={article.image} 
+                    <img
+                      src={article.image}
                       alt={article.title}
                       className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
                     />
@@ -221,7 +241,7 @@ export const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-      
+
       {/* Newsletter Section */}
       <section className="py-16 bg-primary-900 text-white">
         <div className="container mx-auto px-4">
@@ -230,11 +250,11 @@ export const HomePage: React.FC = () => {
             <p className="text-gray-300 mb-8">
               Subscribe to our newsletter to receive the latest updates, exclusive offers, and tech news.
             </p>
-            
+
             <form className="flex flex-col sm:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
+              <input
+                type="email"
+                placeholder="Your email address"
                 className="flex-grow px-4 py-3 rounded-md bg-white/10 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 text-white placeholder-gray-300"
                 required
               />
@@ -242,7 +262,7 @@ export const HomePage: React.FC = () => {
                 Subscribe Now
               </Button>
             </form>
-            
+
             <p className="text-sm text-gray-400 mt-4">
               By subscribing, you agree to our Privacy Policy and consent to receive updates from our company.
             </p>
