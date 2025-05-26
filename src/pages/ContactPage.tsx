@@ -27,8 +27,8 @@ export const ContactPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-[40vh] bg-primary-900 overflow-hidden">
         <div className="absolute inset-0">
-          <img 
-            src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+          <img
+            src="https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
             alt="Contact Us"
             className="w-full h-full object-cover opacity-30"
           />
@@ -48,10 +48,10 @@ export const ContactPage: React.FC = () => {
       <div className="container mx-auto px-4 py-16">
         <div className="grid md:grid-cols-3 gap-8">
           {/* Contact Information */}
-          <div className="md:col-span-1">
+          {/* <div className="md:col-span-1">
             <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Information</h2>
-              
+
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="bg-primary-100 rounded-full p-3 mt-1">
@@ -107,10 +107,10 @@ export const ContactPage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              {/* Map */}
-              <div className="mt-8">
+          {/* Map */}
+          {/* <div className="mt-8">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0637507774103!2d-122.41941658468186!3d37.77492997975903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1565277444772!5m2!1sen!2sus"
                   width="100%"
@@ -123,13 +123,89 @@ export const ContactPage: React.FC = () => {
                 ></iframe>
               </div>
             </div>
+          </div> */}
+
+          <div className="md:col-span-1">
+            <div className="bg-white rounded-lg shadow-md p-3 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Contact Information</h2>
+              <div className="space-y-4 sm:space-y-6">
+                <div className="flex items-start">
+                  <div className="bg-primary-100 rounded-full p-2 sm:p-3 mt-1 flex-shrink-0">
+                    <MapPin className="w-4 h-4 sm:w-6 sm:h-6 text-primary-600" />
+                  </div>
+                  <div className="ml-3 sm:ml-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Visit Us</h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-tight sm:leading-normal">
+                      1234 Tech Avenue<br />
+                      San Francisco, CA 94107
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-primary-100 rounded-full p-2 sm:p-3 mt-1 flex-shrink-0">
+                    <Phone className="w-4 h-4 sm:w-6 sm:h-6 text-primary-600" />
+                  </div>
+                  <div className="ml-3 sm:ml-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Call Us</h3>
+                    <p className="text-sm sm:text-base text-gray-600">
+                      <a href="tel:+1-555-123-4567" className="hover:text-primary-600">
+                        +1 (555) 123-4567
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-primary-100 rounded-full p-2 sm:p-3 mt-1 flex-shrink-0">
+                    <Mail className="w-4 h-4 sm:w-6 sm:h-6 text-primary-600" />
+                  </div>
+                  <div className="ml-3 sm:ml-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Email Us</h3>
+                    <p className="text-sm sm:text-base text-gray-600">
+                      <a href="mailto:info@techgadget.com" className="hover:text-primary-600 break-all">
+                        info@techgadget.com
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="bg-primary-100 rounded-full p-2 sm:p-3 mt-1 flex-shrink-0">
+                    <Clock className="w-4 h-4 sm:w-6 sm:h-6 text-primary-600" />
+                  </div>
+                  <div className="ml-3 sm:ml-4">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-900">Business Hours</h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-tight sm:leading-normal">
+                      Monday - Friday: 9:00 AM - 6:00 PM<br />
+                      Saturday: 10:00 AM - 4:00 PM<br />
+                      Sunday: Closed
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map */}
+              <div className="mt-6 sm:mt-8">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0637507774103!2d-122.41941658468186!3d37.77492997975903!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sSan+Francisco%2C+CA!5e0!3m2!1sen!2sus!4v1565277444772!5m2!1sen!2sus"
+                  width="100%"
+                  height="150"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="rounded-lg sm:h-[200px]"
+                ></iframe>
+              </div>
+            </div>
           </div>
 
           {/* Contact Form */}
           <div className="md:col-span-2">
-            <div className="bg-white rounded-lg shadow-md p-6">
+            {/* <div className="bg-white rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h2>
-              
+
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Input
@@ -137,7 +213,7 @@ export const ContactPage: React.FC = () => {
                     error={errors.name?.message}
                     {...register('name', { required: 'Name is required' })}
                   />
-                  
+
                   <Input
                     label="Email Address"
                     type="email"
@@ -164,7 +240,7 @@ export const ContactPage: React.FC = () => {
                       },
                     })}
                   />
-                  
+
                   <Input
                     label="Subject"
                     error={errors.subject?.message}
@@ -179,11 +255,10 @@ export const ContactPage: React.FC = () => {
                   <textarea
                     {...register('message', { required: 'Message is required' })}
                     rows={6}
-                    className={`block w-full rounded-md border px-4 py-2 transition-colors duration-200 focus:outline-none focus:ring-1 ${
-                      errors.message
-                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                        : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
-                    }`}
+                    className={`block w-full rounded-md border px-4 py-2 transition-colors duration-200 focus:outline-none focus:ring-1 ${errors.message
+                      ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                      : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
+                      }`}
                   ></textarea>
                   {errors.message && (
                     <p className="mt-1 text-sm text-error-500">{errors.message.message}</p>
@@ -199,12 +274,87 @@ export const ContactPage: React.FC = () => {
                   Send Message
                 </Button>
               </form>
+            </div> */}
+            <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">Send Us a Message</h2>
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <Input
+                    label="Full Name"
+                    error={errors.name?.message}
+                    {...register('name', { required: 'Name is required' })}
+                  />
+
+                  <Input
+                    label="Email Address"
+                    type="email"
+                    error={errors.email?.message}
+                    {...register('email', {
+                      required: 'Email is required',
+                      pattern: {
+                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                        message: 'Invalid email address',
+                      },
+                    })}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                  <Input
+                    label="Phone Number"
+                    type="tel"
+                    error={errors.phone?.message}
+                    {...register('phone', {
+                      pattern: {
+                        value: /^[0-9-+\s()]*$/,
+                        message: 'Invalid phone number',
+                      },
+                    })}
+                  />
+
+                  <Input
+                    label="Subject"
+                    error={errors.subject?.message}
+                    {...register('subject', { required: 'Subject is required' })}
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    {...register('message', { required: 'Message is required' })}
+                    rows={4}
+                    className={`block w-full rounded-md border px-3 sm:px-4 py-2 text-sm sm:text-base transition-colors duration-200 focus:outline-none focus:ring-1 resize-none ${errors.message
+                        ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                        : 'border-gray-300 focus:border-blue-500 focus:ring-blue-500'
+                      }`}
+                    placeholder="Tell us how we can help you..."
+                  ></textarea>
+                  {errors.message && (
+                    <p className="mt-1 text-sm text-error-500">{errors.message.message}</p>
+                  )}
+                </div>
+
+                <div className="pt-2">
+                  <Button
+                    type="submit"
+                    size="lg"
+                    className="w-full sm:w-auto sm:min-w-[200px]"
+                    rightIcon={<Send size={18} />}
+                  >
+                    Send Message
+                  </Button>
+                </div>
+              </form>
             </div>
 
             {/* FAQ Section */}
             <div className="mt-8 bg-white rounded-lg shadow-md p-6">
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-              
+
               <div className="space-y-6">
                 {[
                   {
@@ -227,6 +377,7 @@ export const ContactPage: React.FC = () => {
                 ))}
               </div>
             </div>
+            
           </div>
         </div>
       </div>
