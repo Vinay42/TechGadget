@@ -87,7 +87,7 @@
 //             )}>
 //               <Search size={20} />
 //             </button>
-            
+
 //             <Link to="/cart" className="relative">
 //               <button className={clsx(
 //                 'p-2 rounded-full transition-colors text-gray-600 hover:bg-gray-100'
@@ -100,7 +100,7 @@
 //                 </span>
 //               )}
 //             </Link>
-            
+
 //             {isAuthenticated ? (
 //               <div className="relative group">
 //                 <Link to="/account">
@@ -137,7 +137,7 @@
 //               </Link>
 //             )}
 //           </div>
-          
+
 //           {/* Mobile menu button */}
 //           <div className="md:hidden flex items-center">
 //             <Link to="/cart" className="relative mr-4">
@@ -152,7 +152,7 @@
 //                 </span>
 //               )}
 //             </Link>
-            
+
 //             <button
 //               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
 //               className={clsx(
@@ -181,7 +181,7 @@
 //                 {link.name}
 //               </Link>
 //             ))}
-            
+
 //             <div className="pt-2 border-t border-gray-200">
 //               {isAuthenticated ? (
 //                 <>
@@ -226,12 +226,14 @@
 //   return classes.filter(Boolean).join(' ');
 // }
 
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu, X } from 'lucide-react';
 import { Button } from '../ui/Button';
 import { useAuth } from '../../context/AuthContext';
 import { useCart } from '../../context/CartContext';
+import { SearchBar } from '../ui/SearchbBar';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -239,6 +241,7 @@ export const Header: React.FC = () => {
   const { user, isAuthenticated, logout } = useAuth();
   const { itemCount } = useCart();
   const location = useLocation();
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   // Check if we're on a transparent header page (home)
   const isTransparentPage = location.pathname === '/';
@@ -347,12 +350,20 @@ export const Header: React.FC = () => {
           {/* Actions */}
           <div className="hidden sm:flex items-center space-x-2 md:space-x-3 lg:space-x-4">
             {/* Search - Hide on smaller tablet screens */}
-            <button className={clsx(
+            {/* <button className={clsx(
               'hidden md:block p-2 rounded-full transition-colors text-gray-600 hover:bg-gray-100'
             )}>
               <Search size={18} className="lg:w-5 lg:h-5" />
-            </button>
-            
+            </button> */}
+            <div className="hidden sm:flex lg:hidden flex-grow max-w-xs">
+              <SearchBar />
+            </div>
+
+            {/* Desktop Search - full width */}
+            <div className="hidden lg:flex flex-grow max-w-xl mx-4">
+              <SearchBar />
+            </div>
+
             <Link to="/cart" className="relative">
               <button className={clsx(
                 'p-2 rounded-full transition-colors text-gray-600 hover:bg-gray-100'
@@ -365,7 +376,7 @@ export const Header: React.FC = () => {
                 </span>
               )}
             </Link>
-            
+
             {isAuthenticated ? (
               <div className="relative group">
                 <Link to="/account">
@@ -382,7 +393,7 @@ export const Header: React.FC = () => {
                 <div className="absolute right-0 mt-2 w-44 lg:w-48 py-2 bg-white rounded-md shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                   <Link to="/account" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">My Account</Link>
                   <Link to="/account/orders" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Orders</Link>
-                  <button 
+                  <button
                     onClick={logout}
                     className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   >
@@ -392,7 +403,7 @@ export const Header: React.FC = () => {
               </div>
             ) : (
               <Link to="/login">
-                <Button 
+                <Button
                   size="sm"
                   leftIcon={<User size={14} className="lg:w-4 lg:h-4" />}
                   className="text-xs px-3 py-1.5 lg:text-sm lg:px-4 lg:py-2"
@@ -403,7 +414,7 @@ export const Header: React.FC = () => {
               </Link>
             )}
           </div>
-          
+
           {/* Mobile menu button and cart */}
           <div className="flex items-center sm:hidden">
             <Link to="/cart" className="relative mr-3">
@@ -418,7 +429,7 @@ export const Header: React.FC = () => {
                 </span>
               )}
             </Link>
-            
+
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={clsx(
@@ -453,7 +464,7 @@ export const Header: React.FC = () => {
                 to={link.path}
                 className={clsx(
                   'block px-3 py-2 rounded-md text-base font-medium',
-                  location.pathname === link.path 
+                  location.pathname === link.path
                     ? 'bg-primary-50 text-primary-600'
                     : 'text-gray-700 hover:bg-gray-50'
                 )}
@@ -462,13 +473,27 @@ export const Header: React.FC = () => {
                 {link.name}
               </Link>
             ))}
-            
+
             {/* Search in mobile menu */}
-            <button className="w-full flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+            {/* <button className="w-full flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">
+              <Search size={20} className="mr-2" />
+              Search
+            </button> */}
+            <button
+              className="w-full flex items-center px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50"
+              onClick={() => setShowMobileSearch(!showMobileSearch)}
+            >
               <Search size={20} className="mr-2" />
               Search
             </button>
-            
+
+            {/* Add mobile search dropdown right after the search button */}
+{showMobileSearch && (
+  <div className="px-3 py-2">
+    <SearchBar />
+  </div>
+)}
+
             <div className="pt-2 border-t border-gray-200 mt-2">
               {isAuthenticated ? (
                 <>
@@ -515,7 +540,7 @@ export const Header: React.FC = () => {
                 to={link.path}
                 className={clsx(
                   'block px-3 py-2 rounded-md text-sm font-medium',
-                  location.pathname === link.path 
+                  location.pathname === link.path
                     ? 'bg-primary-50 text-primary-600'
                     : 'text-gray-700 hover:bg-gray-50'
                 )}

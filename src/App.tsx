@@ -12,6 +12,8 @@ import { LoginPage, RegisterPage } from './pages/AuthPages';
 import { CartPage } from './pages/CartPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { AccountPage } from './pages/AccountPage';
 
 // Protected route wrapper
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -78,6 +80,15 @@ function App() {
               } 
             />
 
+            <Route 
+                path="/products/:id" 
+                element={
+                  <AppLayout>
+                    <ProductDetailsPage />
+                  </AppLayout>
+                } 
+              />
+
             {/* About Us */}
             <Route 
               path="/about" 
@@ -128,10 +139,7 @@ function App() {
               element={
                 <ProtectedRoute>
                   <AppLayout>
-                    <div className="container mx-auto px-4 py-16">
-                      <h1 className="text-3xl font-bold">My Account</h1>
-                      <p className="mt-4">This page will be implemented next.</p>
-                    </div>
+                    <AccountPage />
                   </AppLayout>
                 </ProtectedRoute>
               } 
